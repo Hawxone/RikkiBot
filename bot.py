@@ -53,4 +53,4 @@ async def on_ready():
 
 
 
-bot.run('NTUyNzUzOTU3NTg0MjQwNjQw.D2EH9w.1cSyVasHMXIi8inuNKL2HqhW-OU', bot=True, reconnect=True)
+bot.run('NTUxNzE3NjA5MTA4NjY4NDI2.D11Cxg.5GkUZeO4LKfSDqrGDnji6YwBlqI', bot=True, reconnect=True)
