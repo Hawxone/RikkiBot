@@ -1,9 +1,10 @@
 import discord
+import os
 from discord.ext import commands
 
 import sys, traceback
 
-
+TOKEN = os.environ['token'] # The token is substituted for security reasons
 
 def get_prefix(bot, message):
     """A callable Prefix for our bot. This could be edited to allow per server prefixes."""
@@ -53,4 +54,4 @@ async def on_ready():
 
 
 
-bot.run('NTUxNzE3NjA5MTA4NjY4NDI2.D11Cxg.5GkUZeO4LKfSDqrGDnji6YwBlqI', bot=True, reconnect=True)
+bot.run(TOKEN, bot=True, reconnect=True)
