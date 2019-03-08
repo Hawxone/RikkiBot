@@ -184,9 +184,7 @@ class MusicPlayer(commands.Cog):
             # Make sure the FFmpeg process is cleaned up.
             source.cleanup()
             self.current = None
-            if os.path.exists(source.filename):
-                print(str(source.filename))       #remove "#" if download is TRUE
-                os.remove(source.filename)
+                       
             try:
                 # We are no longer playing this song...
                 await self.np.delete()
@@ -330,7 +328,7 @@ class Music(commands.Cog):
 
         # If download is False, source will be a dict which will be used later to regather the stream.
         # If download is True, source will be a discord.FFmpegPCMAudio with a VolumeTransformer.
-        source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop, download=True)
+        source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop, download=False)
 
 
         await player.queue.put(source)
