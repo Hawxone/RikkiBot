@@ -75,11 +75,12 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
         # take items from a playlist
         songs=[]
+        messages=[]
+        number = 0
+
         for data in data['entries']:
-
-
-            await ctx.send(f'```ini\n[Added {data["title"]} to the Queue.]\n```', delete_after=15)
-
+            number += 1
+            messages.append(f'{number}. Added {data["title"]} to the Queue.')
 
             if download:
                 source = ytdl.prepare_filename(data)
@@ -88,8 +89,16 @@ class YTDLSource(discord.PCMVolumeTransformer):
             else:
                 songs.append({'webpage_url': data['webpage_url'], 'requester': ctx.author, 'title': data['title']})
 
+        if len(messages) > 10:
+            message = '\n'.join(str(e) for e in messages[0:10])
+            await ctx.send(f'```{message} \n ...```')
+            return songs
 
-        return songs
+        else:
+            message = '\n'.join(str(e) for e in messages)
+            await ctx.send(f'```{message}```')
+            return songs
+
 
     @classmethod
     async def create_source(cls, ctx, search: str, *, loop, download=False):
