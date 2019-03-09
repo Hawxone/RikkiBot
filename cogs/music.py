@@ -22,14 +22,15 @@ ytdlopts = {
     'format': 'bestaudio/best',
     'outtmpl': 'downloads/%(extractor)s-%(id)s-%(title)s.%(ext)s',
     'restrictfilenames': True,
-    'noplaylist': False,
     'nocheckcertificate': True,
     'ignoreerrors': True,
-    'logtostderr': False,
-    'quiet': True,
+    'logtostderr': True,
+    'quiet': False,
     'no_warnings': True,
     'default_search': 'auto',
-    'source_address': '0.0.0.0'  # ipv6 addresses cause issues sometimes
+    'source_address': '0.0.0.0',
+    'verbose': True,
+    'playliststart': 1
 }
 
 ffmpegopts = {
@@ -73,6 +74,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         data = await loop.run_in_executor(None, to_run)
 
 
+
         # take items from a playlist
         songs=[]
         messages=[]
@@ -80,7 +82,12 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
         for data in data['entries']:
             number += 1
+            if not data:
+                print('ERROR: Unable to get info. Continuing...')
+                continue
             messages.append(f'{number}. Added {data["title"]} to the Queue.')
+
+
 
             if download:
                 source = ytdl.prepare_filename(data)
