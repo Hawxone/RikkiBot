@@ -6,17 +6,14 @@ Youtube download is set FALSE by default
 """
 
 import discord
-from discord.ext import commands
-
 import asyncio
 import itertools
 import sys
-import os
 import traceback
 from async_timeout import timeout
 from functools import partial
 from youtube_dl import YoutubeDL
-
+from discord.ext import commands
 
 ytdlopts = {
     'format': 'bestaudio/best',
@@ -200,9 +197,9 @@ class MusicPlayer(commands.Cog):
             # Make sure the FFmpeg process is cleaned up.
             source.cleanup()
             self.current = None
-            if os.path.exists(source.filename):
-                print(str(source.filename))       #remove "#" if download is TRUE
-                os.remove(source.filename)
+            #if os.path.exists(source.filename):
+                #print(str(source.filename))       #remove "#" if download is TRUE but i don't recommend this
+                #os.remove(source.filename)
             try:
                 # We are no longer playing this song...
                 await self.np.delete()
@@ -299,10 +296,10 @@ class Music(commands.Cog):
 
         await ctx.send(f'Connected to: **{channel}**', delete_after=20)
 
-    @commands.command(name='playlist', aliases=['sing'])
+    @commands.command(name='playlist', aliases=['Playlist'])
     async def list_(self, ctx, *, search: str):
         """
-        Request a playlist from youube and add them to the queue.
+        Request a playlist from youtube and add them to the queue.
         This command attempts to join a valid voice channel if the bot is not already in one.
         Uses playlist URL to automatically retrieve a playlist.
         """
@@ -317,7 +314,7 @@ class Music(commands.Cog):
 
 
         # If download is False, source will be a dict which will be used later to regather the stream.
-        # If download is True, source will be a discord.FFmpegPCMAudio with a VolumeTransformer.
+        # If download is True, source will be a discord.FFmpegPCMAudio with a VolumeTransformer [not recommended].
 
         songs = await YTDLSource.create_playlist(ctx, search, loop=self.bot.loop, download=False)
 
@@ -328,7 +325,7 @@ class Music(commands.Cog):
             print(song)
             await player.queue.put(source[song])
 
-    @commands.command(name='play', aliases=['single'])
+    @commands.command(name='play', aliases=['Play'])
     async def play_(self, ctx, *, search: str):
         """Request a song and add it to the queue.
         This command attempts to join a valid voice channel if the bot is not already in one.

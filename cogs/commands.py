@@ -27,7 +27,30 @@ class CommandsCog(commands.Cog):
 
     @commands.command(name='help')
     async def help(self, ctx):
-        await ctx.send('```nigga```')
+        await ctx.send('```RikkiBot`s command section \n\n'
+                       ''
+                       'All commands started with ">>" \n\n'
+                       'Basic Commands : \n'
+                       ''
+                       '>>ping      //returns pong! \n'
+                       '>>repeat    // repeats your message \n'
+                       '>>clear     // Clear last 100 messages \n\n'
+                       ''
+                       'Music Commands : \n'
+                       '>>join or >>connect     // joins your voice channel \n'
+                       '>>playlist {URL}        // play youtube playlist URL \n'
+                       '>>play {URL or String}  // search or play youtube URL \n'
+                       '>>pause                 // pause current playing song\n'
+                       '>>resume                // resume stopped song\n'
+                       '>>skip                  // skip current playing song \n'
+                       '>>queue or >>q          // returns song queue info \n'
+                       '>>playing               // returns current playing song \n'
+                       '>>stop                  // tells the bot to stop and leave the channel\n\n'
+                       ''
+                       'Other commands : \n'
+                       '>>thunder {player_name} // returns war thunder player stats \n\n'
+                       ''
+                       'to chat with the Rikki, use prefix `bot` and enter your message ```')
 
     @commands.command(name='embeds')
     @commands.guild_only()

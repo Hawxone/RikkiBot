@@ -1,8 +1,8 @@
 import discord
 import os
+import sys
+import traceback
 from discord.ext import commands
-
-import sys, traceback
 
 TOKEN = os.environ['token'] # The token is substituted for security reasons
 
@@ -26,7 +26,8 @@ def get_prefix(bot, message):
 initial_extensions = [
     'cogs.commands',
     'cogs.music',
-    'cogs.ai'
+    'cogs.ai',
+    'cogs.thunderskill'
     ]
 
 bot = commands.Bot(command_prefix=get_prefix, description='A Rewrite Cog Example')
