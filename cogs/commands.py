@@ -27,7 +27,8 @@ class CommandsCog(commands.Cog):
 
     @commands.command(name='help')
     async def help(self, ctx):
-        await ctx.send('```RikkiBot`s command section \n\n'
+        await ctx.send(''
+                       '```RikkiBot`s command section \n\n'
                        ''
                        'All commands started with ">>" \n\n'
                        'Basic Commands : \n'

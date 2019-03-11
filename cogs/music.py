@@ -318,11 +318,11 @@ class Music(commands.Cog):
 
         songs = await YTDLSource.create_playlist(ctx, search, loop=self.bot.loop, download=False)
 
-        print(songs)
+
 
         source = songs
         for song in range(len(source)):
-            print(song)
+
             await player.queue.put(source[song])
 
     @commands.command(name='play', aliases=['Play'])

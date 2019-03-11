@@ -47,7 +47,7 @@ class Thunder(commands.Cog):
 
             for data in soup.find_all('span', class_='badge'):
                 kd.append(data.text)
-                print(data)
+
 
         else:
             await ctx.send("Can't find the user")
