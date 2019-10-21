@@ -14,7 +14,7 @@ idna==2.8
 lxml==4.3.2
 mathparse==0.1.2
 multidict==4.5.2
-nltk==3.4
+nltk==3.4.5
 Pint==0.9
 pycparser==2.19
 pymongo==3.7.2
