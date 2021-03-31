@@ -11,7 +11,7 @@ config==0.4.0
 git+https://github.com/Rapptz/discord.py@rewrite#egg=discord.py[voice]
 html5lib==1.0.1
 idna==2.8
-lxml==4.3.2
+lxml==4.6.3
 mathparse==0.1.2
 multidict==4.5.2
 nltk==3.4
